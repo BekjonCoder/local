@@ -13,7 +13,7 @@ import JobSeekerDashboard from './pages/JobSeekerDashboard'
 import EmployerDashboard from './pages/EmployerDashboard'
 import 'leaflet/dist/leaflet.css'
 
-const { Header, Content, Footer } = Layout
+const { Header, Content } = Layout
 
 const App: React.FC = () => {
   const navigate = useNavigate()
@@ -52,10 +52,6 @@ const App: React.FC = () => {
           <Route path="/employer/:username" element={<EmployerDashboard />} />
         </Routes>
       </Content>
-
-      <Footer style={{ textAlign: 'center' }}>
-        Ish Qidirish & Ish Berish Loyihasi ©2025
-      </Footer>
     </Layout>
   )
 }
