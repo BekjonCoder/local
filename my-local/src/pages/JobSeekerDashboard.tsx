@@ -475,7 +475,8 @@ export default function JobsMapPage() {
 
     fetchJobs();
   }, []);
-
+  
+const [searchEnabled, setSearchEnabled] = useState(false);
   return (
     <div style={{ padding: 20 }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
@@ -486,17 +487,22 @@ export default function JobsMapPage() {
       </div>
 
       <Select
-        value={selectedCity.name}
-        style={{ width: 250, marginBottom: 20 }}
-        onChange={(value: string) => {
-          const city = cities.find((c) => c.name === value);
-          if (city) {
-            setSelectedCity(city);
-            setSelectedJob(null);
-          }
-        }}
-        options={cities.map((city) => ({ label: city.name, value: city.name }))}
-      />
+  value={selectedCity.name}
+  style={{ width: 250, marginBottom: 20 }}
+  onChange={(value: string) => {
+    const city = cities.find((c) => c.name === value);
+    if (city) {
+      setSelectedCity(city);
+      setSelectedJob(null);
+    }
+  }}
+  showSearch={searchEnabled} // faqat dropdown ochilganda qidiruv yoqilsin
+  onDropdownVisibleChange={(open) => setSearchEnabled(open)} // dropdown ochilganda search yoqilsin
+  filterOption={(input, option) =>
+    (option?.label ?? "").toLowerCase().includes(input.toLowerCase())
+  }
+  options={cities.map((city) => ({ label: city.name, value: city.name }))}
+/>
 
       <MapContainer
         center={[selectedCity.lat, selectedCity.lng]}
