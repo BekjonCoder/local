@@ -34,6 +34,10 @@ type City = {
 
 const cities: City[] = [
   { name: "Tashkent", lat: 41.2995, lng: 69.2401 },
+  { name: "Samarkand", lat: 39.6270, lng: 66.9749 },
+  { name: "Bukhara", lat: 39.7746, lng: 64.4283 },
+  { name: "Namangan", lat: 41.0058, lng: 71.6436 },
+  { name: "Andijan", lat: 40.7833, lng: 72.3417 },
   { name: "New York", lat: 40.7128, lng: -74.006 },
   { name: "London", lat: 51.5074, lng: -0.1278 },
   { name: "Paris", lat: 48.8566, lng: 2.3522 },
@@ -429,6 +433,7 @@ const cities: City[] = [
   { name: "Baku", lat: 40.4093, lng: 49.8671 },
   { name: "Astana", lat: 51.1605, lng: 71.4704 },
   { name: "Almaty", lat: 43.222, lng: 76.8512 },
+
 ];
 
 // Helper component to change map view
