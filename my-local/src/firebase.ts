@@ -1,5 +1,3 @@
-// src/firebase.ts
-
 import { initializeApp, getApps } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 
@@ -13,7 +11,6 @@ const firebaseConfig = {
   measurementId: "G-NHH8EKFPXC",
 };
 
-// App faqat bir marta initialize qilinadi
 const app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApps()[0];
 
 const db = getFirestore(app);

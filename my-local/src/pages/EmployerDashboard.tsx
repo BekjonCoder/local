@@ -9,7 +9,6 @@ import { Button } from "antd";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-// Fix Leaflet default marker images
 delete (L.Icon.Default.prototype as any)._getIconUrl;
 L.Icon.Default.mergeOptions({
   iconRetinaUrl:
@@ -20,7 +19,6 @@ L.Icon.Default.mergeOptions({
     "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png",
 });
 
-// Firebase config
 const firebaseConfig = {
   apiKey: "AIzaSyDsyD_cVcBnnin4DWc9XPb6xQ6xZtX6jk4",
   authDomain: "link-ddaac.firebaseapp.com",
@@ -31,7 +29,6 @@ const firebaseConfig = {
   measurementId: "G-NHH8EKFPXC",
 };
 
-// Initialize Firebase once
 const app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApp();
 const db = getFirestore(app);
 
@@ -239,5 +236,3 @@ const EmployerDashboard: React.FC = () => {
 };
 
 export default EmployerDashboard;
-
-// 41.2995, 69.2401

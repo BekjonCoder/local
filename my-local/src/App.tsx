@@ -6,7 +6,6 @@ import {
   UserAddOutlined,
 } from '@ant-design/icons'
 
-// Sahifalar (bo‘sh komponent sifatida)
 import Login from './pages/Login'
 import Register from './pages/Register'
 import JobSeekerDashboard from './pages/JobSeekerDashboard'
@@ -19,7 +18,6 @@ const App: React.FC = () => {
   const navigate = useNavigate()
   const location = useLocation()
 
-  // Header va Menu faqat login va register sahifalarida ko‘rsatiladi
   const showHeader = location.pathname === '/login' || location.pathname === '/register'
 
   return (
@@ -29,7 +27,7 @@ const App: React.FC = () => {
           <Menu
             theme="dark"
             mode="horizontal"
-            selectedKeys={[location.pathname.slice(1)]} // 'login' yoki 'register'
+            selectedKeys={[location.pathname.slice(1)]} 
             items={[
               { key: 'login', icon: <LoginOutlined />, label: 'Login' },
               { key: 'register', icon: <UserAddOutlined />, label: 'Register' },
@@ -46,8 +44,6 @@ const App: React.FC = () => {
           <Route path="/" element={<Navigate to="/login" replace />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-
-          {/* Dinamik routing: username parametri bilan */}
           <Route path="/job-seeker/:username" element={<JobSeekerDashboard />} />
           <Route path="/employer/:username" element={<EmployerDashboard />} />
         </Routes>

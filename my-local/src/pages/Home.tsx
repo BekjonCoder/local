@@ -1,8 +1,6 @@
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-gray-50 text-gray-900">
-
-      {/* HERO / HOME */}
       <main id="home">
         <section className="relative overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
@@ -22,7 +20,6 @@ export default function HomePage() {
               </div>
 
               <div className="relative">
-                {/* Placeholder illustration box */}
                 <div className="w-full h-64 sm:h-80 rounded-xl bg-gradient-to-br from-indigo-100 to-pink-100 flex items-center justify-center border border-dashed border-gray-200">
                   <div className="text-gray-400">Illustration / screenshot joyi</div>
                 </div>

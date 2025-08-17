@@ -10,7 +10,6 @@ import 'react-toastify/dist/ReactToastify.css'
 const { Title } = Typography
 const { Option } = Select
 
-// Firebase Config
 const firebaseConfig = {
   apiKey: "AIzaSyDsyD_cVcBnnin4DWc9XPb6iQ6xZtX6jk4",
   authDomain: "link-ddaac.firebaseapp.com",
@@ -20,7 +19,6 @@ const firebaseConfig = {
   appId: "1:285266088509:web:ef32b9628fea44646c1054"
 }
 
-// Firebase init
 const app = initializeApp(firebaseConfig)
 const db = getFirestore(app)
 
@@ -36,21 +34,18 @@ const Register: React.FC = () => {
     setLoading(true)
 
     try {
-      // Firebase Auth register
       const url = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${API_KEY}`
       const data = { email: values.email, password: values.password, returnSecureToken: true }
 
       const res = await axios.post(url, data)
       const uid = res.data.localId
 
-      // Save user data in Firestore
       await setDoc(doc(db, "users", uid), {
         email: values.email,
         role: values.role,
         createdAt: new Date()
       })
 
-      // Save role in localStorage
       localStorage.setItem('userRole', values.role)
 
       toast.success("Registration successful!")

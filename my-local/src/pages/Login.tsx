@@ -9,7 +9,6 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const { Title } = Typography;
 
-// ✅ Firebase Config
 const firebaseConfig = {
   apiKey: "AIzaSyDsyD_cVcBnnin4DWc9XPb6iQ6xZtX6jk4",
   authDomain: "link-ddaac.firebaseapp.com",
@@ -19,7 +18,6 @@ const firebaseConfig = {
   appId: "1:285266088509:web:ef32b9628fea44646c1054"
 };
 
-// ✅ Init Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
@@ -35,21 +33,16 @@ const Login: React.FC = () => {
     setLoading(true);
 
     try {
-      // 🔹 Firebase Authentication Login
       const url = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${API_KEY}`;
       const data = { email: values.email, password: values.password, returnSecureToken: true };
 
       const res = await axios.post(url, data);
-      const uid = res.data.localId; // ✅ Unique user ID
+      const uid = res.data.localId;
       const username = getUsernameFromEmail(values.email);
-
-      // 🔹 Get user data from Firestore
       const userDoc = await getDoc(doc(db, 'users', uid));
 
       if (userDoc.exists()) {
         const userData = userDoc.data();
-
-        // 🔹 Role-based navigation
         if (userData.role === 'employer') {
           toast.success('Login successful! Redirecting to employer dashboard...');
           navigate(`/employer/${username}`);

@@ -1,5 +1,3 @@
-// src/pages/JobsMapPage.tsx
-
 import { useState, useEffect } from "react";
 import { Select, Spin, Empty, Button, Card } from "antd";
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
@@ -17,7 +15,6 @@ interface Job {
   lng?: number;
 }
 
-// Marker icon setup
 delete (L.Icon.Default.prototype as any)._getIconUrl;
 L.Icon.Default.mergeOptions({
   iconRetinaUrl:
@@ -436,7 +433,6 @@ const cities: City[] = [
 
 ];
 
-// Helper component to change map view
 function ChangeMapView({ lat, lng }: { lat: number; lng: number }) {
   const map = useMap();
   map.setView([lat, lng], 12);
@@ -496,8 +492,8 @@ const [searchEnabled, setSearchEnabled] = useState(false);
       setSelectedJob(null);
     }
   }}
-  showSearch={searchEnabled} // faqat dropdown ochilganda qidiruv yoqilsin
-  onDropdownVisibleChange={(open) => setSearchEnabled(open)} // dropdown ochilganda search yoqilsin
+  showSearch={searchEnabled}
+  onDropdownVisibleChange={(open) => setSearchEnabled(open)} 
   filterOption={(input, option) =>
     (option?.label ?? "").toLowerCase().includes(input.toLowerCase())
   }

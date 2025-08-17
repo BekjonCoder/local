@@ -5,7 +5,7 @@ import { auth } from "../firebase/firebase";
 
 interface PrivateRouteProps {
   children: any;
-  redirectTo?: string; // default: /signin
+  redirectTo?: string;
 }
 
 const PrivateRoute: React.FC<PrivateRouteProps> = ({ children, redirectTo = "/signin" }) => {
@@ -18,8 +18,6 @@ const PrivateRoute: React.FC<PrivateRouteProps> = ({ children, redirectTo = "/si
       </div>
     );
   }
-
-  // Agar user bo'lsa children qaytaradi, bo‘lmasa SignIn sahifasiga yuboradi
   return user ? children : <Navigate to={redirectTo} replace />;
 };
 

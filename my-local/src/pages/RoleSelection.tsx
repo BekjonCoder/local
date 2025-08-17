@@ -17,12 +17,9 @@ const RoleSelection: React.FC = () => {
     }
 
     try {
-      // Foydalanuvchi hujjatini yangilash
       await updateDoc(doc(db, "users", user.uid), { role });
 
       message.success("Rol muvaffaqiyatli tanlandi!");
-
-      // Role ga qarab sahifaga yo‘naltirish
       if (role === "employer") {
         navigate("/employer-home");
       } else {
